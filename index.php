@@ -1,6 +1,7 @@
 <?php 
-// 1. Hubungkan ke Database
+// 1. Hubungkan ke Database & Fungsi
 include 'koneksi.php'; 
+include 'includes/functions.php'; // <--- INI WAJIB DITAMBAHKAN AGAR TIDAK ERROR
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -18,12 +19,13 @@ include 'koneksi.php';
                 if($page == 'home') {
                     include 'pages/home.php';
                 } else if ($page == 'kamar') {
-                    include 'pages/kamar.php'; // Jika ada
+                    include 'pages/kamar.php';
+                } else if ($page == 'kontak') { // Tambahkan ini sekalian
+                    include 'pages/kontak.php';
                 } else {
                     include 'pages/home.php';
                 }
             } else {
-                // Default halaman pertama kali buka
                 include 'pages/home.php';
             }
         ?>

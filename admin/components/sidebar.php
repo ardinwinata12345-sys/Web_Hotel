@@ -1,34 +1,42 @@
-<div class="sidebar-admin col-md-2 d-none d-md-block p-0">
-    <div class="d-flex flex-column h-100">
-        <div class="p-4 text-center border-bottom border-secondary">
-            <h4 class="text-white fw-bold serif-font m-0"><i class="fas fa-crown text-warning me-2"></i> ASTON</h4>
-            <small class="text-white-50">Admin Panel</small>
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <div class="d-flex align-items-center brand-wrapper">
+            <i class="fas fa-hotel text-warning fa-2x"></i>
+            <span class="brand-text">ASTON</span>
         </div>
         
-        <div class="py-3">
-            <small class="text-uppercase text-white-50 px-3 fw-bold" style="font-size: 11px;">Main Menu</small>
-            
-            <a href="index.php?modul=dashboard" class="sidebar-link <?= (!isset($_GET['modul']) || $_GET['modul']=='dashboard')?'active':'' ?>">
-                <i class="fas fa-th-large fa-fw me-3"></i> Dashboard
-            </a>
-            <a href="index.php?modul=reservasi" class="sidebar-link <?= (@$_GET['modul']=='reservasi')?'active':'' ?>">
-                <i class="fas fa-calendar-check fa-fw me-3"></i> Reservasi
-            </a>
-            <a href="index.php?modul=kamar" class="sidebar-link <?= (@$_GET['modul']=='kamar')?'active':'' ?>">
-                <i class="fas fa-bed fa-fw me-3"></i> Manajemen Kamar
-            </a>
-            <a href="index.php?modul=tamu" class="sidebar-link <?= (@$_GET['modul']=='tamu')?'active':'' ?>">
-                <i class="fas fa-users fa-fw me-3"></i> Data Tamu
-            </a>
-            <a href="index.php?modul=pesan" class="sidebar-link <?= (@$_GET['modul']=='pesan')?'active':'' ?>">
-                <i class="fas fa-envelope fa-fw me-3"></i> Kotak Masuk
-            </a>
-        </div>
-
-        <div class="mt-auto p-4">
-            <a href="../index.php" target="_blank" class="btn btn-outline-light w-100 btn-sm">
-                <i class="fas fa-external-link-alt me-2"></i> Lihat Website
-            </a>
-        </div>
+        <button type="button" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
-</div>
+
+    <div class="mt-4">
+        <a href="index.php?modul=dashboard" class="nav-link-admin <?= (!isset($_GET['modul']) || $_GET['modul']=='dashboard')?'active':'' ?>">
+            <i class="fas fa-th-large"></i>
+            <span class="link-text">Dashboard</span>
+        </a>
+        <a href="index.php?modul=reservasi" class="nav-link-admin <?= (@$_GET['modul']=='reservasi')?'active':'' ?>">
+            <i class="fas fa-calendar-check"></i>
+            <span class="link-text">Reservasi</span>
+        </a>
+        <a href="index.php?modul=kamar" class="nav-link-admin <?= (@$_GET['modul']=='kamar')?'active':'' ?>">
+            <i class="fas fa-bed"></i>
+            <span class="link-text">Data Kamar</span>
+        </a>
+        <a href="index.php?modul=tamu" class="nav-link-admin <?= (@$_GET['modul']=='tamu')?'active':'' ?>">
+            <i class="fas fa-users"></i>
+            <span class="link-text">Data Tamu</span>
+        </a>
+        <a href="index.php?modul=pesan" class="nav-link-admin <?= (@$_GET['modul']=='pesan')?'active':'' ?>">
+            <i class="fas fa-envelope"></i>
+            <span class="link-text">Kotak Masuk</span>
+        </a>
+    </div>
+
+    <div class="sidebar-footer">
+        <a href="../index.php" target="_blank" class="btn-web">
+            <i class="fas fa-globe"></i>
+            <span class="ms-2">Ke Website</span>
+        </a>
+    </div>
+</nav>

@@ -1,71 +1,89 @@
-<div class="mb-4">
-    <h3 class="fw-bold text-dark">Dashboard Overview</h3>
-    <p class="text-muted">Ringkasan aktivitas hotel hari ini.</p>
+<div class="mb-5">
+    <h5 class="text-secondary mb-1">Overview</h5>
+    <h2 class="fw-bold" style="color: var(--navy-dark);">Dashboard Statistik</h2>
 </div>
 
 <div class="row g-4">
     <div class="col-md-3">
-        <div class="stat-card d-flex align-items-center">
-            <div class="bg-primary bg-opacity-10 text-primary rounded-3 p-3 me-3">
-                <i class="fas fa-calendar-alt fa-2x"></i>
+        <div class="card-dashboard">
+            <div class="icon-box bg-primary bg-opacity-10 text-primary">
+                <i class="fas fa-clock"></i>
             </div>
             <div>
-                <small class="text-muted fw-bold">RESERVASI PENDING</small>
+                <div class="card-title-small">Pending</div>
                 <?php $p = mysqli_fetch_array(mysqli_query($koneksi, "SELECT COUNT(*) as j FROM Reservasi WHERE stat_reserv='Pending'")); ?>
-                <h3 class="mb-0 fw-bold"><?= $p['j'] ?></h3>
+                <div class="card-value"><?= $p['j'] ?></div>
             </div>
         </div>
     </div>
 
     <div class="col-md-3">
-        <div class="stat-card d-flex align-items-center">
-            <div class="bg-success bg-opacity-10 text-success rounded-3 p-3 me-3">
-                <i class="fas fa-door-open fa-2x"></i>
+        <div class="card-dashboard">
+            <div class="icon-box bg-success bg-opacity-10 text-success">
+                <i class="fas fa-door-open"></i>
             </div>
             <div>
-                <small class="text-muted fw-bold">KAMAR TERSEDIA</small>
+                <div class="card-title-small">Kamar Tersedia</div>
                 <?php $k = mysqli_fetch_array(mysqli_query($koneksi, "SELECT COUNT(*) as j FROM Ruangan WHERE status_ruangan='Tersedia'")); ?>
-                <h3 class="mb-0 fw-bold"><?= $k['j'] ?></h3>
+                <div class="card-value"><?= $k['j'] ?></div>
             </div>
         </div>
     </div>
 
     <div class="col-md-3">
-        <div class="stat-card d-flex align-items-center">
-            <div class="bg-warning bg-opacity-10 text-warning rounded-3 p-3 me-3">
-                <i class="fas fa-envelope fa-2x"></i>
+        <div class="card-dashboard">
+            <div class="icon-box bg-warning bg-opacity-10 text-warning">
+                <i class="fas fa-envelope"></i>
             </div>
             <div>
-                <small class="text-muted fw-bold">PESAN MASUK</small>
+                <div class="card-title-small">Pesan Masuk</div>
                 <?php $m = mysqli_fetch_array(mysqli_query($koneksi, "SELECT COUNT(*) as j FROM Pesan")); ?>
-                <h3 class="mb-0 fw-bold"><?= $m['j'] ?></h3>
+                <div class="card-value"><?= $m['j'] ?></div>
             </div>
         </div>
     </div>
-    
+
     <div class="col-md-3">
-        <div class="stat-card d-flex align-items-center">
-            <div class="bg-info bg-opacity-10 text-info rounded-3 p-3 me-3">
-                <i class="fas fa-users fa-2x"></i>
+        <div class="card-dashboard">
+            <div class="icon-box bg-info bg-opacity-10 text-info">
+                <i class="fas fa-users"></i>
             </div>
             <div>
-                <small class="text-muted fw-bold">TOTAL TAMU</small>
+                <div class="card-title-small">Total Tamu</div>
                 <?php $t = mysqli_fetch_array(mysqli_query($koneksi, "SELECT COUNT(*) as j FROM Tamu")); ?>
-                <h3 class="mb-0 fw-bold"><?= $t['j'] ?></h3>
+                <div class="card-value"><?= $t['j'] ?></div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row mt-4">
-    <div class="col-md-12">
-        <div class="card border-0 shadow-sm rounded-3">
-            <div class="card-header bg-white py-3 border-bottom">
-                <h5 class="mb-0 fw-bold">Akses Cepat</h5>
+<div class="row mt-5">
+    <div class="col-md-8">
+        <div class="card border-0 shadow-sm" style="border-radius: 20px;">
+            <div class="card-header bg-white border-0 pt-4 px-4">
+                <h5 class="fw-bold mb-0">Reservasi Terbaru</h5>
             </div>
-            <div class="card-body">
-                <a href="index.php?modul=reservasi" class="btn btn-primary me-2"><i class="fas fa-plus me-1"></i> Proses Check-In</a>
-                <a href="index.php?modul=kamar" class="btn btn-outline-dark"><i class="fas fa-search me-1"></i> Cek Kamar</a>
+            <div class="card-body px-4">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="text-secondary small">
+                            <tr><th>Tamu</th><th>Check-In</th><th>Status</th></tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $q_new = mysqli_query($koneksi, "SELECT r.*, t.nama_lengkap FROM Reservasi r JOIN Tamu t ON r.id_tamu=t.id_tamu ORDER BY id_reservasi DESC LIMIT 5");
+                            while($rn = mysqli_fetch_array($q_new)):
+                                $badge = ($rn['stat_reserv']=='Pending') ? 'bg-warning' : 'bg-success';
+                            ?>
+                            <tr>
+                                <td class="fw-bold"><?= $rn['nama_lengkap'] ?></td>
+                                <td><?= $rn['check_in'] ?></td>
+                                <td><span class="badge <?= $badge ?> rounded-pill"><?= $rn['stat_reserv'] ?></span></td>
+                            </tr>
+                            <?php endwhile; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

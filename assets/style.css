@@ -1,164 +1,168 @@
-/* --- GOOGLE FONTS --- */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap');
 
 :root {
-    --primary: #1e293b; /* Dark Slate */
-    --gold: #c5a47e;    /* Luxury Gold */
-    --gold-hover: #b08d62;
-    --light: #f8fafc;
-    --dark: #0f172a;
-    --shadow: 0 10px 30px rgba(0,0,0,0.08);
+    --primary: #1B3C53;
+    --secondary: #456882;
+    --accent: #d4af37; /* Warna Emas */
+    --light: #E3E3E3;
+    --dark: #111;
 }
 
 body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: var(--light);
-    color: var(--dark);
-    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: var(--primary);
+    overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, .serif-font {
+h1, h2, h3, h4, h5, .navbar-brand, .serif-font {
     font-family: 'Playfair Display', serif;
 }
 
-/* --- NAVBAR MODERN --- */
+/* Navbar Mewah */
 .navbar-custom {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 15px 0;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    background-color: var(--primary);
+    padding: 1rem 0;
 }
 .navbar-brand {
-    color: var(--primary) !important;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-size: 1.5rem;
+    color: rgb(230, 230, 230) !important;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
 }
 .nav-link {
-    color: var(--primary) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
     font-weight: 500;
-    margin: 0 10px;
-    position: relative;
-    transition: 0.3s;
 }
-.nav-link:hover, .nav-link.active {
-    color: var(--gold) !important;
+.nav-link:hover {
+    color: var(--accent) !important;
 }
 
-/* --- BUTTONS --- */
-.btn-gold {
-    background: var(--gold);
-    color: white;
-    border: none;
-    padding: 12px 35px;
-    border-radius: 5px; /* Sedikit rounded, tapi tegas */
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-}
-.btn-gold:hover {
-    background: var(--gold-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(197, 164, 126, 0.4);
-    color: white;
-}
-
-/* --- HERO SECTION --- */
-.hero-section {
-    height: 90vh;
-    background: url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover fixed;
+/* Hero Section Parallax */
+.hero {
+    background: linear-gradient(rgba(27, 60, 83, 0.7), rgba(27, 60, 83, 0.7)), 
+                url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-attachment: fixed;
+    height: 85vh;
     display: flex;
     align-items: center;
-    position: relative;
-}
-.hero-overlay {
-    background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.4));
-    position: absolute; inset: 0;
+    color: white;
 }
 
-/* --- BOOKING CARD (Floating Glass) --- */
-.booking-wrapper {
-    margin-top: -80px;
-    position: relative;
-    z-index: 10;
-}
-.booking-card {
-    background: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-    border-top: 5px solid var(--gold);
-}
-
-/* --- ROOM CARDS --- */
+/* Kartu Kamar */
 .room-card {
     border: none;
-    border-radius: 12px;
+    transition: transform 0.3s;
     overflow: hidden;
-    transition: 0.4s;
     background: white;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    border-radius: 10px;
 }
 .room-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 .room-img-top {
     height: 250px;
     object-fit: cover;
-    transition: 0.5s;
 }
-.room-card:hover .room-img-top {
-    transform: scale(1.05);
+.price-tag {
+    color: var(--primary);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
-/* --- FOOTER --- */
-.mega-footer {
-    background: var(--primary);
+/* Form Booking Custom */
+.booking-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    margin-top: -100px; /* Overlap effect */
+    position: relative;
+    z-index: 10;
+}
+
+/* Tombol */
+.btn-gold {
+    background-color: var(--primary);
     color: white;
-    padding-top: 80px;
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: 0.3s;
+    border: none;
+}
+.btn-gold:hover {
+    background-color: var(--accent); /* Ubah ke accent saat hover agar emas */
+    color: white;
+}
+
+/* Utilities */
+.object-fit-cover { object-fit: cover; width: 100%; }
+.ls-1 { letter-spacing: 1px; }
+.ls-2 { letter-spacing: 2px; }
+.text-warning { color: var(--accent) !important; }
+
+/* Kontak Section */
+.contact-section {
+    background-color: white;
+    padding: 80px 0;
+}
+.contact-box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+.icon-contact {
+    width: 50px; height: 50px;
+    background-color: var(--light);
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; margin-right: 15px;
+}
+
+/* Mega Footer */
+.mega-footer {
+    background-color: #0d1f2d;
+    color: white;
+    padding-top: 60px;
+    font-size: 0.9rem;
 }
 .footer-title {
-    color: var(--gold);
-    margin-bottom: 25px;
-    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    color: var(--accent);
 }
 .footer-link {
-    display: block;
     color: rgba(255,255,255,0.7);
-    text-decoration: none;
-    margin-bottom: 12px;
-    transition: 0.3s;
+    text-decoration: none; display: block;
+    margin-bottom: 10px; transition: 0.3s;
 }
 .footer-link:hover { color: white; padding-left: 5px; }
-
-/* --- ADMIN DASHBOARD --- */
-.sidebar-admin {
-    background: var(--primary);
-    min-height: 100vh;
-    box-shadow: 5px 0 15px rgba(0,0,0,0.05);
+.social-icon {
+    width: 40px; height: 40px;
+    border: 1px solid rgba(255,255,255,0.2);
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 50%; color: white; margin-right: 10px;
+    transition: 0.3s; text-decoration: none;
 }
-.sidebar-link {
-    color: rgba(255,255,255,0.7);
-    padding: 15px 20px;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    border-left: 3px solid transparent;
-    transition: 0.3s;
+.social-icon:hover {
+    background-color: var(--accent);
+    border-color: var(--accent); color: white;
 }
-.sidebar-link:hover, .sidebar-link.active {
-    background: rgba(255,255,255,0.05);
-    color: white;
-    border-left-color: var(--gold);
+.app-btn {
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 5px; padding: 10px 15px;
+    display: inline-flex; align-items: center;
+    color: white; text-decoration: none;
+    margin-right: 10px; margin-bottom: 10px;
 }
-.stat-card {
-    border: none;
-    border-radius: 12px;
-    padding: 25px;
-    transition: 0.3s;
-    background: white;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+.app-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.cert-logo {
+    font-size: 2.5rem; color: rgba(255,255,255,0.5); margin-right: 15px;
 }
-.stat-card:hover { transform: translateY(-5px); }
-.table-custom thead { background-color: var(--primary); color: white; }

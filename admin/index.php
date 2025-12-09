@@ -1,12 +1,10 @@
 <?php 
 include '../koneksi.php';
-
-// 1. Panggil Header & Sidebar
 include 'components/header.php';
 include 'components/sidebar.php';
 ?>
 
-<div class="col-md-10 p-4" style="min-height: 100vh;">
+<div id="main-content">
     <?php
     if(isset($_GET['modul'])){
         $modul = $_GET['modul'];
@@ -14,6 +12,7 @@ include 'components/sidebar.php';
             case 'dashboard': include 'modules/dashboard.php'; break;
             case 'reservasi': include 'modules/reservasi.php'; break;
             case 'kamar':     include 'modules/kamar.php'; break;
+            case 'tamu':      include 'modules/tamu.php'; break;
             case 'pesan':     include 'modules/pesan.php'; break;
             default:          include 'modules/dashboard.php'; break;
         }
@@ -23,7 +22,4 @@ include 'components/sidebar.php';
     ?>
 </div>
 
-<?php 
-// 3. Panggil Footer
-include 'components/footer.php'; 
-?>
+<?php include 'components/footer.php'; ?>
